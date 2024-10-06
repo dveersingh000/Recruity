@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+dotenv.config();
 const mongoose = require("mongoose");
 const fs = require("fs");
 const {incomingRequestLogger} = require("./middleware/index");
@@ -7,8 +8,6 @@ const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
 const bodyParser = require("body-parser");
 
-
-dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -69,4 +69,15 @@ router.post("/login", async(req, res) => {
     res.status(200).json({token});
 })
 
+// update an user
+router.patch("/:id", async(req, res) => {
+    const {id} = req.params;
+    const {name, email, password} = req.body;
+    const user = await User.findByIdAndUpdate(id, {name, email, password});
+    if(!user){
+        return res.status(404).json({message: "User not found"});
+    }
+    res.status(200).json({message: "User updated successfully"});
+})
+
 module.exports = router;
